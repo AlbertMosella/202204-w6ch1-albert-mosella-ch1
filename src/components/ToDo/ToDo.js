@@ -8,7 +8,9 @@ const ToDo = ({ toDo: { id, name, done } }) => {
     <>
       <p>ID:{id}</p>
       <p>To do:{name}</p>
-      <p>Done:{done}</p>
+      <p>
+        Done: {done && "Completed"} {!done && "Pending"}
+      </p>
       <button onClick={() => dispatch(deleteToDoActionCreator(id))}>
         Delete
       </button>
