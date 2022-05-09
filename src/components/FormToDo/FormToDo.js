@@ -7,34 +7,38 @@ const FormToDo = () => {
 
   const [id, setId] = useState("");
   const [name, setName] = useState("");
-  const [done, setDone] = useState("");
+  const [done, setDone] = useState(false);
 
   const addToDo = (event) => {
     event.preventDefault();
-    if (id === "") {
-      return;
-    }
-    if (name === "") {
-      return;
-    }
-    if (done === "") {
-      return;
-    }
-    setId(event.target.value);
-    setName(event.target.value);
-    setDone(event.target.value);
-
-    dispatch(addToDoActionCreator({ id, name, done }));
+    const newToDo = {
+      id: id,
+      name: name,
+      done: done,
+    };
+    dispatch(addToDoActionCreator(newToDo));
   };
 
   return (
     <form noValidate autoComplete="off">
       <label htmlFor="id">ID:</label>
-      <input type="text" id="id" />
+      <input
+        onChange={(event) => setId(event.target.value)}
+        type="text"
+        id="id"
+      />
       <label htmlFor="name">Name:</label>
-      <input type="text" id="name" />
+      <input
+        onChange={(event) => setName(event.target.value)}
+        type="text"
+        id="name"
+      />
       <label htmlFor="done">Done:</label>
-      <input type="text" id="done" />
+      <input
+        onChange={(event) => setDone(event.target.value)}
+        type="text"
+        id="done"
+      />
       <button onClick={addToDo}>Add</button>
     </form>
   );
