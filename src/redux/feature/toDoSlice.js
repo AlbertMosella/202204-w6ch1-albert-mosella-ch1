@@ -5,6 +5,7 @@ const toDoSlice = createSlice({
   initialState: [],
   reducers: {
     loadToDos: (toDos, action) => [...action.payload],
+    addToDo: (toDos, action) => [...toDos, action.payload],
     deleteToDo: (toDos, action) =>
       toDos.filter((toDo) => toDo.id !== action.payload),
   },
@@ -13,6 +14,7 @@ const toDoSlice = createSlice({
 export const {
   loadToDos: loadToDosActionCreator,
   deleteToDo: deleteToDoActionCreator,
+  addToDo: addToDoActionCreator,
 } = toDoSlice.actions;
 
 export default toDoSlice.reducer;
